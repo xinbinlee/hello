@@ -1,0 +1,965 @@
+<!doctype html>
+<!--
+================================================================
+TeachAny v7.14 · 高锰酸钾趣味实验 - 小学2年级
+================================================================
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>高锰酸钾趣味实验 - 小学2年级</title>
+<meta name="description" content="小学生2年级科学课：观察高锰酸钾在水中的有趣现象，认识紫色小晶体">
+
+<!-- TeachAny routing meta -->
+<meta name="course-id" content="kmno4-grade2">
+<meta name="course-title" content="高锰酸钾趣味实验">
+<meta name="course-subject" content="chemistry">
+<meta name="course-grade" content="elementary-2">
+<meta name="course-prereqs" content="">
+<meta name="course-next" content="">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.14.0">
+<meta name="teachany-node" content="free_mode_kmno4_grade2">
+<meta name="teachany-subject" content="chemistry">
+<meta name="teachany-grade" content="2">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="物质科学">
+<meta name="teachany-prerequisites" content="溶解现象,颜色变化,实验安全">
+<meta name="teachany-lesson-type" content="experiment">
+<meta name="teachany-free-mode" content="true">
+<meta name="teachany-difficulty" content="easy">
+<meta name="teachany-author" content="TeachAny AI">
+
+<style>
+:root {
+  --bg: #0a1628;
+  --panel: #132240;
+  --card: #1a2d50;
+  --line: #2a4a7f;
+  --text: #e8f4ff;
+  --muted: #8fb8e8;
+  --brand: #60b8ff;
+  --brand-2: #a78bfa;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --pink: #f472b6;
+  --purple: #a78bfa;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+body {
+  padding-top: var(--safe-top);
+  padding-bottom: calc(18px + var(--safe-bottom));
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  line-height: 1.9;
+  font-size: 18px;
+}
+a { color: #7dd3fc; }
+button, a, input, select, textarea { min-height: 48px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+
+.teachany-brand-bar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 16px;
+  background: rgba(10,22,40,.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(148,163,184,.15);
+}
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #f8fafc; text-decoration: none; font-weight: 800; font-size: 17px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #07111f; font-weight: 900; font-size: 15px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { text-decoration: none; color: #cbd5e1; }
+.brand-version { color: #94a3b8; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.08); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.hero {
+  padding: 50px 20px 36px;
+  text-align: center;
+  background: radial-gradient(circle at 30% 20%, rgba(96,184,255,.15), transparent 40%), radial-gradient(circle at 70% 80%, rgba(167,139,250,.12), transparent 38%);
+}
+h1 { font-size: clamp(26px, 7vw, 48px); line-height: 1.2; margin: 0 auto 14px; max-width: 800px; }
+.subtitle { color: var(--muted); font-size: clamp(15px, 3vw, 19px); max-width: 760px; margin: 0 auto; }
+
+.section { max-width: 960px; margin: 0 auto; padding: 30px 18px; }
+
+.card {
+  background: linear-gradient(180deg, rgba(26,45,80,.96), rgba(15,28,50,.96));
+  border: 1px solid rgba(148,163,184,.16);
+  border-radius: 18px; padding: 24px 20px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.16);
+}
+
+/* 大按钮 - 适合小学生点击 */
+.big-btn {
+  display: block; width: 100%; max-width: 360px; margin: 12px auto;
+  padding: 16px 20px; border-radius: 16px;
+  border: 2px solid var(--brand);
+  background: rgba(96,184,255,.1);
+  color: var(--text); font-size: 18px; font-weight: 700;
+  cursor: pointer; transition: all .2s;
+}
+.big-btn:hover, .big-btn:active { background: rgba(96,184,255,.22); transform: scale(1.02); }
+.big-btn.correct { border-color: var(--ok); background: rgba(74,222,128,.15); }
+.big-btn.wrong { border-color: #ef4444; background: rgba(239,68,68,.12); }
+
+/* 颜色展示块 */
+.color-block {
+  display: inline-block; width: 60px; height: 36px;
+  border-radius: 8px; vertical-align: middle; border: 1px solid rgba(255,255,255,.15);
+}
+
+/* 互动区 */
+.interaction-box {
+  background: #0d1f3c; border: 1px solid rgba(148,163,184,.15);
+  border-radius: 16px; padding: 20px; margin: 18px 0;
+}
+
+/* Canvas 容器 */
+.canvas-wrap { overflow: auto; background: #08162a; border: 1px solid rgba(148,163,184,.15); border-radius: 16px; padding: 10px; }
+
+/* 结果提示 */
+.result { padding: 14px 16px; border-radius: 12px; background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.22); margin-top: 14px; font-size: 17px; }
+.result.wrong-result { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.22); }
+.result.info-result { background: rgba(96,184,255,.08); border-color: rgba(96,184,255,.2); }
+
+h2 { font-size: 22px; margin: 0 0 14px; color: #7dd3fc; }
+h3 { font-size: 18px; margin: 18px 0 10px; color: var(--brand); }
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .hero { padding: 36px 16px 28px; }
+  .section { padding: 22px 14px; }
+  .card { padding: 18px 16px; border-radius: 16px; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部品牌栏 -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://weponusa.github.io/teachany/" aria-label="TeachAny Gallery">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="https://weponusa.github.io/teachany/">Gallery</a>
+    <span class="brand-version">v1.0 · skill v7.14</span>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero" id="hero">
+  <h1>🔬 高锰酸钾的趣味实验</h1>
+  <p class="subtitle">紫色小晶体在水中会变出什么神奇颜色？一起来观察吧！（小学2年级）</p>
+</header>
+
+<!-- ==================== ABT 叙事（学习动机）==================== -->
+<section class="section" id="abt-narrative">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#fbbf24;margin-bottom:10px;">为什么学这个？</span>
+    <h2>🤔 一个有趣的问题</h2>
+    <div style="font-size:17px;line-height:2.2;">
+      <p><strong style="color:#7dd3fc;">🧠 你已经知道：</strong>有些东西放进水里会消失（比如盐和糖），水会变成咸的或甜的。这叫"溶解"。</p>
+      <p><strong style="color:#fbbf24;">🤯 但你可能不知道：</strong>有一种紫黑色的小晶体，放进水里不仅会消失，还会让整杯水变成漂亮的紫色！这是为什么呢？</p>
+      <p><strong style="color:#4ade80;">🎯 所以今天我们要：</strong>认识高锰酸钾这种神奇的紫色晶体，观察它在水里慢慢"跑"开的美丽现象，看看颜色是怎么从深紫变成淡紫的！</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HERO INFOGRAPHIC ==================== -->
+<section class="section" id="hero-infographic">
+  <figure style="margin:0 auto;max-width:800px;text-align:center;">
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:16px;background:#0d1f3c;padding:10px;">
+      <!-- 标题 -->
+      <text x="340" y="32" text-anchor="middle" fill="#7dd3fc" font-size="20" font-weight="bold">高锰酸钾实验 · 学习地图</text>
+      <!-- 晶体 -->
+      <rect x="40" y="70" width="140" height="100" rx="14" fill="#1a2d50" stroke="#a78bfa" stroke-width="2"/>
+      <text x="110" y="95" text-anchor="middle" fill="#c4b5fd" font-size="13">① 紫色小晶体</text>
+      <rect x="65" y="108" width="16" height="16" rx="3" fill="#7c3aed"/>
+      <rect x="85" y="108" width="16" height="16" rx="3" fill="#6d28d9"/>
+      <rect x="105" y="108" width="16" height="16" rx="3" fill="#7c3aed"/>
+      <rect x="65" y="128" width="16" height="16" rx="3" fill="#6d28d9"/>
+      <rect x="85" y="128" width="16" height="16" rx="3" fill="#7c3aed"/>
+      <rect x="105" y="128" width="16" height="16" rx="3" fill="#6d28d9"/>
+      <rect x="65" y="148" width="16" height="16" rx="3" fill="#7c3aed"/>
+      <rect x="85" y="148" width="16" height="16" rx="3" fill="#6d28d9"/>
+      <rect x="105" y="148" width="16" height="16" rx="3" fill="#7c3aed"/>
+      <text x="110" y="175" text-anchor="middle" fill="#e8f4ff" font-size="12">像小石子一样</text>
+      <!-- 箭头1 -->
+      <path d="M185 120 L245 120" stroke="#60b8ff" stroke-width="3" marker-end="url(#arrow)"/>
+      <!-- 放水里 -->
+      <rect x="250" y="70" width="150" height="100" rx="14" fill="#1a2d50" stroke="#60b8ff" stroke-width="2"/>
+      <text x="325" y="95" text-anchor="middle" fill="#7dd3fc" font-size="13">② 放入水中</text>
+      <!-- 水滴 -->
+      <ellipse cx="300" cy="130" rx="28" ry="20" fill="#1e40af" opacity=".5"/>
+      <ellipse cx="340" cy="135" rx="24" ry="18" fill="#1e40af" opacity=".5"/>
+      <ellipse cx="320" cy="140" rx="20" ry="15" fill="#1e40af" opacity=".5"/>
+      <text x="325" y="175" text-anchor="middle" fill="#e8f4ff" font-size="12">慢慢溶解</text>
+      <!-- 箭头2 -->
+      <path d="M405 120 L465 120" stroke="#60b8ff" stroke-width="3"/>
+      <!-- 变色 -->
+      <rect x="470" y="70" width="170" height="100" rx="14" fill="#1a2d50" stroke="#4ade80" stroke-width="2"/>
+      <text x="555" y="95" text-anchor="middle" fill="#4ade80" font-size="13">③ 水变颜色了！</text>
+      <!-- 紫色水 -->
+      <rect x="490" y="108" width="130" height="50" rx="10" fill="#7c3aed" opacity=".5"/>
+      <text x="555" y="140" text-anchor="middle" fill="#e8f4ff" font-size="14" font-weight="bold">紫色！</text>
+      <text x="555" y="175" text-anchor="middle" fill="#e8f4ff" font-size="12">越来越淡</text>
+      <!-- 底部说明 -->
+      <rect x="40" y="200" width="600" height="60" rx="12" fill="rgba(96,184,255,.08)" stroke="rgba(96,184,255,.2)" stroke-width="1"/>
+      <text x="60" y="225" fill="#e8f4ff" font-size="13">🌟 我们能学到：① 认识高锰酸钾晶体</text>
+      <text x="60" y="248" fill="#e8f4ff" font-size="13">② 观察紫色在水里扩散的现象  ③ 自己动手做小实验！</text>
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="#60b8ff"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption style="color:#8fb8e8;font-size:14px;margin-top:8px;">先看看今天要学什么 →</figcaption>
+  </figure>
+</section>
+
+<!-- ==================== 问题锚点 ==================== -->
+<section class="section" id="problem-anchor">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(96,184,255,.12);border:1px solid rgba(96,184,255,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#bae6fd;margin-bottom:10px;">想一想</span>
+    <h2>你最想知道什么？</h2>
+    <p style="color:var(--muted);font-size:16px;">先选一个你最关心的问题，后面的内容会围绕它来讲哦！</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+      <button class="big-btn" onclick="selectQuestion(this,'为什么紫色小晶体放水里水会变紫？')">🟣 为什么紫色小晶体放水里水会变紫？</button>
+      <button class="big-btn" onclick="selectQuestion(this,'高锰酸钾晶体长什么样？')">💎 高锰酸钾晶体长什么样？</button>
+      <button class="big-btn" onclick="selectQuestion(this,'我也可以自己做这个实验吗？')">🧪 我也可以自己做这个实验吗？</button>
+    </div>
+    <div style="margin-top:16px;">
+      <p style="color:var(--muted);font-size:15px;">或者，把你想问的问题写在这里：</p>
+      <input id="learner-q" placeholder="我想知道……" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0b1628;color:var(--text);font-size:16px;">
+    </div>
+    <div id="anchor-feedback" style="margin-top:14px;padding:12px 16px;border-radius:12px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);color:#fbbf24;font-size:15px;">👆 先选一个问题，或者写出你的问题！</div>
+  </div>
+</section>
+
+<!-- ==================== 学习目标 ==================== -->
+<section class="section" id="objectives">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#4ade80;margin-bottom:10px;">学习目标</span>
+    <h2>这节课结束后，你能：</h2>
+    <ul style="font-size:17px;line-height:2.2;padding-left:20px;">
+      <li>🌟 认识高锰酸钾——一种紫黑色的小晶体</li>
+      <li>👀 观察高锰酸钾在水里慢慢溶解、水变紫色的现象</li>
+      <li>🎨 知道高锰酸钾溶液的颜色是从深紫到浅紫的</li>
+      <li>🔬 了解做科学小实验要注意的安全事项</li>
+      <li>📝 用简单的语言描述你看到的现象</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== 前测 ==================== -->
+<section class="section" id="pretest" data-tsh="前测 - 先看看你已经知道什么">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(244,114,182,.12);border:1px solid rgba(244,114,182,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#f9a8d4;margin-bottom:10px;">课前小测</span>
+    <h2>📝 上课前先考考你！</h2>
+    <p style="color:var(--muted);font-size:15px;">不要担心，随便选，看看你已经知道多少啦~</p>
+
+    <div style="margin-top:16px;padding:14px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;">Q1：盐放进水里会"消失"，这叫什么？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest1(this,true)">A. 溶解</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest1(this,false)">B. 消失术</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest1(this,false)">C. 魔法</button>
+      <div id="p1-feedback" style="display:none;margin-top:10px;"></div>
+    </div>
+    <div style="margin-top:14px;padding:14px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;">Q2：有一种化学药水，放水里整杯水都会变紫色，它是？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest2(this,false)">A. 牛奶</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest2(this,false)">B. 橙汁</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPretest2(this,true)">C. 高锰酸钾</button>
+      <div id="p2-feedback" style="display:none;margin-top:10px;"></div>
+    </div>
+    <div id="pretest-total" style="display:none;margin-top:14px;padding:12px;border-radius:12px;background:rgba(96,184,255,.08);border:1px solid rgba(96,184,255,.2);font-size:15px;color:#7dd3fc;">📊 课前小测完成！不管对错，学完今天的内容你一定能全对！</div>
+  </div>
+</section>
+
+<!-- ==================== 模块1：认识高锰酸钾晶体 ==================== -->
+<section class="section" id="module-crystal">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#c4b5fd;margin-bottom:10px;">第1部分 · 认识高锰酸钾</span>
+    <h2>💎 高锰酸钾长什么样？</h2>
+    <p>高锰酸钾是一种<strong style="color:#c4b5fd;">紫黑色（深紫色）的小晶体</strong>，看起来像一粒粒小小的深色砂糖或盐粒。</p>
+    <p>它的名字里有个"锰"字，读作 <strong style="color:#fbbf24;">gāo měng suān jiǎ</strong>。</p>
+
+    <!-- 3D 晶体展示 -->
+    <div class="interaction-box">
+      <h3>🔍 转动看看——高锰酸钾晶体3D模型</h3>
+      <p style="color:var(--muted);font-size:15px;margin-bottom:14px;">下面的紫色小方块就是高锰酸钾晶体的模型，可以拖动旋转哦！</p>
+      <div id="mol-viewer" style="width:100%;height:320px;position:relative;border-radius:14px;overflow:hidden;background:#07111f;"></div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+        <button class="big-btn" style="max-width:160px;padding:10px 14px;font-size:15px;" onclick="rotateCrystal()">🔄 转动晶体</button>
+        <button class="big-btn" style="max-width:160px;padding:10px 14px;font-size:15px;border-color:var(--purple);" onclick="resetCrystal()">↺ 恢复原位</button>
+      </div>
+      <div id="crystal-hint" style="margin-top:10px;font-size:15px;color:var(--muted);">点击按钮转动晶体，从各个角度看一看！</div>
+    </div>
+
+    <div style="margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(96,184,255,.06);border:1px solid rgba(96,184,255,.15);font-size:16px;line-height:1.9;">
+      <strong style="color:#7dd3fc;">📖 小知识：</strong><br>
+      高锰酸钾的晶体是<span style="color:#c4b5fd;">斜方晶系</span>，就像一排排整齐排列的小积木。科学家用X射线才能看到这种形状，我们用电脑把它画出来，就能从各个角度观察啦！
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 模块2：紫色扩散实验（核心互动） ==================== -->
+<section class="section" id="module-diffusion">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(244,114,182,.12);border:1px solid rgba(244,114,182,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#f9a8d4;margin-bottom:10px;">第2部分 · 核心实验</span>
+    <h2>🧪 紫色在水里"跑"起来了！</h2>
+    <p>把一粒高锰酸钾晶体放进水里，会发生非常漂亮的现象——<strong style="color:#c4b5fd;">紫色会慢慢向四周扩散</strong>，整杯水逐渐变成紫色！</p>
+
+    <!-- Canvas 互动：紫色扩散模拟 -->
+    <div class="interaction-box">
+      <h3>🎮 互动小实验：模拟高锰酸钾扩散</h3>
+      <p style="color:var(--muted);font-size:15px;margin-bottom:10px;">点击下方"滴入高锰酸钾"按钮，观察紫色在水里慢慢扩散的过程！</p>
+      <canvas id="diffusion-canvas" width="680" height="400" style="width:100%;border-radius:14px;background:#071525;border:1px solid rgba(148,163,184,.12);cursor:pointer;"></canvas>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+        <button class="big-btn" style="max-width:200px;padding:12px 16px;font-size:16px;" onclick="dropCrystal()">💧 滴入高锰酸钾</button>
+        <button class="big-btn" style="max-width:160px;padding:12px 16px;font-size:16px;border-color:var(--purple);" onclick="resetDiffusion()">↺ 重新来过</button>
+      </div>
+      <div id="diffusion-status" style="margin-top:10px;font-size:15px;color:var(--muted);">点击"滴入高锰酸钾"开始观察！</div>
+
+      <!-- 浓度观察 -->
+      <div style="margin-top:16px;padding:14px;border-radius:12px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);">
+        <p style="font-size:15px;color:#c4b5fd;margin:0 0 8px;">🌈 观察：溶液颜色的深浅</p>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px;">
+          <span>深紫色</span>
+          <div class="color-block" style="background:#5b21b6;"></div>
+          <span>→</span>
+          <div class="color-block" style="background:#7c3aed;"></div>
+          <span>→</span>
+          <div class="color-block" style="background:#a78bfa;"></div>
+          <span>→</span>
+          <div class="color-block" style="background:#c4b5fd;"></div>
+          <span>→</span>
+          <div class="color-block" style="background:#ede9fe;"></div>
+          <span>很淡的紫色</span>
+        </div>
+        <p style="font-size:14px;color:var(--muted);margin:8px 0 0;">越靠近晶体的地方颜色越深，越远的地方颜色越淡。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 模块3：趣味现象 ==================== -->
+<section class="section" id="module-fun">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#fbbf24;margin-bottom:10px;">第3部分 · 有趣的现象</span>
+    <h2>🌟 高锰酸钾还有这些有趣的现象！</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px;">
+
+      <!-- 现象1 -->
+      <div style="background:#0d1f3c;border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🟣</div>
+        <h3 style="font-size:16px;color:#c4b5fd;margin:0 0 8px;">紫色洗手液</h3>
+        <p style="font-size:15px;color:var(--muted);line-height:1.7;">高锰酸钾溶液可以消毒，医生有时用它来清洗小伤口。不过小朋友不能自己用哦，要在大人帮助下！</p>
+      </div>
+
+      <!-- 现象2 -->
+      <div style="background:#0d1f3c;border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🦷</div>
+        <h3 style="font-size:16px;color:#f9a8d4;margin:0 0 8px;">牙齿变白？</h3>
+        <p style="font-size:15px;color:var(--muted);line-height:1.7;">高锰酸钾可以和牙齿上的污渍发生反应，有些牙膏里就有类似的成分，帮助牙齿变得更白更亮！</p>
+      </div>
+
+      <!-- 现象3 -->
+      <div style="background:#0d1f3c;border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🌊</div>
+        <h3 style="font-size:16px;color:#7dd3fc;margin:0 0 8px;">池塘消毒</h3>
+        <p style="font-size:15px;color:var(--muted);line-height:1.7;">养鱼的小朋友可能见过，鱼缸水里加一点点高锰酸钾，可以帮助消灭水里的坏细菌，让小鱼更健康！</p>
+      </div>
+
+      <!-- 现象4 -->
+      <div style="background:#0d1f3c;border:1px solid rgba(148,163,184,.12);border-radius:14px;padding:18px;">
+        <div style="font-size:28px;margin-bottom:8px;">🎨</div>
+        <h3 style="font-size:16px;color:#4ade80;margin:0 0 8px;">画画用紫色</h3>
+        <p style="font-size:15px;color:var(--muted);line-height:1.7;">高锰酸钾溶液是很好的紫色颜料！艺术家有时用它来画画出漂亮的紫色。你也可以试试用紫色水彩笔画画哦！</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);font-size:15px;line-height:1.8;">
+      <strong style="color:#f87171;">⚠️ 安全提醒：</strong><br>
+      高锰酸钾是一种<strong>化学药品</strong>，不能放进嘴里，也不能弄到眼睛里！如果你在学校做实验，一定要在老师指导下进行。在家想观察，可以让爸爸妈妈帮忙！
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 深层理解（五镜头） ==================== -->
+<section class="section" id="deep-understanding">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(96,184,255,.12);border:1px solid rgba(96,184,255,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#7dd3fc;margin-bottom:10px;">深层理解</span>
+    <h2>🔍 换个角度看看高锰酸钾</h2>
+    <p style="color:var(--muted);font-size:15px;">从不同角度来理解这个有趣的科学现象：</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px;">
+      <div style="padding:14px;border-radius:12px;background:rgba(96,184,255,.06);border:1px solid rgba(96,184,255,.15);">
+        <p style="font-size:15px;font-weight:700;color:#7dd3fc;margin:0 0 8px;">🧊 类比法</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;">高锰酸钾溶解就像<strong>砂糖溶进热水</strong>——越搅拌越快。只是高锰酸钾自带颜色，所以你能"看到"溶解的过程！</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.15);">
+        <p style="font-size:15px;font-weight:700;color:#c4b5fd;margin:0 0 8px;">🔬 微观视角</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;">用超级显微镜看：高锰酸钾的<strong>高锰酸根离子（MnO₄⁻）</strong>本身就是紫色的。它们离开晶体后分散到水中，就像无数紫色小气球飘散开来。</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);">
+        <p style="font-size:15px;font-weight:700;color:#4ade80;margin:0 0 8px;">📐 数学视角</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;">紫色扩散可以用<strong>浓度</strong>来描述：越靠近晶体的地方浓度越大（颜色深），越远的地方浓度越小（颜色淡）。这就像往平静水面扔一颗石子，涟漪由近及远。</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(244,114,182,.06);border:1px solid rgba(244,114,182,.15);">
+        <p style="font-size:15px;font-weight:700;color:#f9a8d4;margin:0 0 8px;">🔄 跨学科视角</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;">化学+美术：高锰酸钾的紫色是最古老的<strong>紫色颜料</strong>之一。古代艺术家用它来画教堂的彩色玻璃！科学和艺术是好朋友。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 模块4：Quiz 互动问答 ==================== -->
+<section class="section" id="module-quiz">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(96,184,255,.12);border:1px solid rgba(96,184,255,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#bae6fd;margin-bottom:10px;">小测验</span>
+    <h2>📝 来考考你！</h2>
+    <p style="color:var(--muted);font-size:16px;">看看你是不是已经成了"高锰酸钾小专家"！</p>
+
+    <!-- 题目1 -->
+    <div style="margin-top:20px;padding:16px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;margin:0 0 12px;">第1题：高锰酸钾晶体是什么颜色的？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz(this,false,'不对哦，食盐是白色的！高锰酸钾是紫黑色的。')">A. 白色</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz(this,true,'答对啦！🎉 高锰酸钾是紫黑色的晶体。')">B. 紫黑色</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz(this,false,'不对哦，硫酸铜晶体才是蓝色的！')">C. 蓝色</button>
+      <div class="quiz-feedback" id="q1-feedback"></div>
+    </div>
+
+    <!-- 题目2 -->
+    <div style="margin-top:18px;padding:16px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;margin:0 0 12px;">第2题：高锰酸钾放进水里，水会变成什么颜色？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz2(this,false,'不对哦，红色是其他化学药品的颜色！')">A. 红色</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz2(this,false,'不对哦，高锰酸钾不是绿色的！')">B. 绿色</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz2(this,true,'太棒了！💜 水会变成紫色！')">C. 紫色</button>
+      <div class="quiz-feedback" id="q2-feedback"></div>
+    </div>
+
+    <!-- 题目3 -->
+    <div style="margin-top:18px;padding:16px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;margin:0 0 12px;">第3题：高锰酸钾可以用来做什么？（多选感觉对的）</p>
+      <p style="font-size:14px;color:var(--muted);margin:0 0 12px;">提示：回想一下前面学过的内容哦！</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz3(this,true,'对的！高锰酸钾可以消毒，帮助清洁伤口。')">A. 消毒伤口</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz3(this,true,'没错！鱼塘有时会用它来消灭坏细菌。')">B. 给池塘水消毒</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkQuiz3(this,false,'不对哦，高锰酸钾不能吃！千万不要放进嘴里！')">C. 做成紫色糖果</button>
+      <div class="quiz-feedback" id="q3-feedback"></div>
+    </div>
+
+    <!-- 总分 -->
+    <div id="quiz-total" style="margin-top:20px;padding:16px;border-radius:14px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);font-size:17px;font-weight:700;color:#4ade80;display:none;"></div>
+  </div>
+</section>
+
+<!-- ==================== 易错点覆盖 ==================== -->
+<section class="section" id="common-mistakes">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#f87171;margin-bottom:10px;">小心！常见错误</span>
+    <h2>⚠️ 这些是同学们容易出错的地方</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px;">
+      <div style="padding:14px;border-radius:12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);">
+        <p style="font-size:15px;font-weight:700;color:#f87171;margin:0 0 6px;">❌ 错误1：高锰酸钾是药，可以吃</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;"><strong style="color:#4ade80;">✅ 正确：</strong>虽然高锰酸钾可以消毒，但它是化学药品，<em>绝对不能吃</em>！只能外用在皮肤小伤口上（要在大人帮助下）。</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);">
+        <p style="font-size:15px;font-weight:700;color:#f87171;margin:0 0 6px;">❌ 错误2：紫色是它"染"上去的</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;"><strong style="color:#4ade80;">✅ 正确：</strong>紫色不是"染色"，而是高锰酸根离子（MnO₄⁻）本身就有紫色。晶体溶解后，紫色粒子分散到水中。</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);">
+        <p style="font-size:15px;font-weight:700;color:#f87171;margin:0 0 6px;">❌ 错误3：溶解就是消失了</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;line-height:1.7;"><strong style="color:#4ade80;">✅ 正确：</strong>高锰酸钾晶体并没有"消失"，而是变成了非常非常小的紫色粒子，分散到水的各个地方。所以你还能看到紫色！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 后测 ==================== -->
+<section class="section" id="posttest" data-tsh="后测 - 学完了，看看你是不是都掌握了">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#4ade80;margin-bottom:10px;">课后测验</span>
+    <h2>🎯 学完了，再来挑战！</h2>
+    <p style="color:var(--muted);font-size:15px;">看看你是不是还记得今天学的内容~</p>
+
+    <div style="margin-top:16px;padding:14px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;">Q1：高锰酸钾晶体放进水里，紫色是怎么变化的？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost1(this,false)">A. 紫色一下子充满整杯水</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost1(this,true)">B. 紫色从晶体旁边慢慢向四周扩散</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost1(this,false)">C. 紫色只留在杯底不会动</button>
+      <div id="post1-fb" class="result info-result" style="display:none;margin-top:10px;"></div>
+    </div>
+
+    <div style="margin-top:14px;padding:14px;border-radius:14px;background:#0d1f3c;border:1px solid rgba(148,163,184,.12);">
+      <p style="font-size:16px;font-weight:700;">Q2：高锰酸钾不能用来做什么？</p>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost2(this,false)">A. 消毒小伤口</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost2(this,false)">B. 清洁池塘水</button>
+      <button class="big-btn" style="max-width:100%;" onclick="checkPost2(this,true)">C. 放进嘴里当糖果</button>
+      <div id="post2-fb" class="result info-result" style="display:none;margin-top:10px;"></div>
+    </div>
+
+    <div id="posttest-result" style="display:none;margin-top:16px;padding:16px;border-radius:14px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);font-size:17px;font-weight:700;color:#4ade80;"></div>
+  </div>
+</section>
+
+<!-- ==================== 小结 ==================== -->
+<section class="section" id="summary">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#4ade80;margin-bottom:10px;">课程小结</span>
+    <h2>🎉 今天学到了什么？</h2>
+    <div style="font-size:17px;line-height:2.2;">
+      <p>✅ 高锰酸钾是<strong style="color:#c4b5fd;">紫黑色的小晶体</strong>，名字读作 <strong>gāo měng suān jiǎ</strong></p>
+      <p>✅ 放进水里会<strong style="color:#a78bfa;">慢慢溶解</strong>，水变成紫色</p>
+      <p>✅ 越靠近晶体的地方颜色<strong style="color:#f472b6;">越深</strong>，越远越淡</p>
+      <p>✅ 可以用来<strong style="color:#4ade80;">消毒</strong>、清洁池塘水</p>
+      <p>✅ 不能放进嘴里，要在大人帮助下做实验！</p>
+    </div>
+
+    <div style="margin-top:20px;padding:16px;border-radius:14px;background:rgba(96,184,255,.06);border:1px solid rgba(96,184,255,.15);">
+      <h3 style="font-size:17px;color:#7dd3fc;margin:0 0 10px;">🏠 和爸爸妈妈一起做</h3>
+      <p style="font-size:15px;line-height:1.8;color:var(--muted);">如果你对高锰酸钾实验感兴趣，可以让爸爸妈妈帮你准备：一杯清水、一粒高锰酸钾晶体（药店可以买到）。在爸爸妈妈的帮助下，把晶体轻轻放进水中，仔细观察紫色扩散的过程，用语言描述你看到的现象！</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 知识图谱 ==================== -->
+<section class="section" id="knowledge-graph">
+  <div class="card">
+    <span style="display:inline-block;background:rgba(96,184,255,.12);border:1px solid rgba(96,184,255,.25);border-radius:999px;padding:4px 14px;font-size:13px;color:#bae6fd;margin-bottom:10px;">知识图谱</span>
+    <h2>🔗 相关知识</h2>
+    <p style="color:var(--muted);font-size:15px;">高锰酸钾属于"物质科学"领域，和这些知识有关：</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px;">
+      <div style="padding:14px;border-radius:12px;background:rgba(96,184,255,.06);border:1px solid rgba(96,184,255,.15);">
+        <p style="font-size:15px;font-weight:700;color:#7dd3fc;margin:0 0 6px;">🔬 溶解现象</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;">糖、盐、高锰酸钾放进水里都会"消失"，这叫溶解。</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.15);">
+        <p style="font-size:15px;font-weight:700;color:#c4b5fd;margin:0 0 6px;">🎨 颜色变化</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;">很多化学物质都有漂亮的颜色，化学是一门"五颜六色"的科学！</p>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);">
+        <p style="font-size:15px;font-weight:700;color:#4ade80;margin:0 0 6px;">⚠️ 实验安全</p>
+        <p style="font-size:14px;color:var(--muted);margin:0;">做科学实验要戴护目镜，不能乱尝乱闻，安全第一！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AI学伴卡片 ==================== -->
+<section class="section" id="teachany-ai-tutor-card">
+  <div data-teachany-tutor-card></div>
+</section>
+
+<!-- ==================== JS ==================== -->
+<script>
+// ============ 问题锚点 ============
+let currentQuestion = '';
+function selectQuestion(btn, q) {
+  document.querySelectorAll('.big-btn').forEach(b => b.style.borderColor = '');
+  btn.style.borderColor = '#60b8ff';
+  btn.style.background = 'rgba(96,184,255,.2)';
+  currentQuestion = q;
+  const feedback = document.getElementById('anchor-feedback');
+  feedback.style.background = 'rgba(74,222,128,.1)';
+  feedback.style.borderColor = 'rgba(74,222,128,.25)';
+  feedback.style.color = '#4ade80';
+  feedback.textContent = '✅ 你的问题：' + q + ' —— 继续往下看，答案就在里面！';
+}
+document.getElementById('learner-q')?.addEventListener('input', function() {
+  const v = this.value.trim();
+  if (v) selectQuestion({style:{}}, v);
+});
+
+// ============ 3D 晶体展示（简单Three.js风格用CSS 3D模拟） ============
+let crystalAngle = 0;
+let crystalRotating = false;
+function initCrystal() {
+  const viewer = document.getElementById('mol-viewer');
+  viewer.innerHTML = '';
+  drawCrystal(viewer, crystalAngle);
+}
+function drawCrystal(container, angle) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 680; canvas.height = 320;
+  canvas.style.width = '100%'; canvas.style.height = '100%';
+  container.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  // 画3D立方体（高锰酸钾晶体简化模型）
+  const cx = 340, cy = 160;
+  const s = 60; // 半边长
+  const rad = angle * Math.PI / 180;
+  const cos = Math.cos(rad), sin = Math.sin(rad);
+
+  // 立方体8个顶点（简化等角投影）
+  const pts = [
+    [-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1],
+    [-1,-1,1], [1,-1,1], [1,1,1], [-1,1,1]
+  ].map(p => {
+    // 旋转Y轴
+    let x = p[0]*cos - p[2]*sin;
+    let z = p[0]*sin + p[2]*cos;
+    let y = p[1];
+    // 等角投影
+    return { x: cx + (x - y)*30, y: cy + (x + y)*15 - z*20 };
+  });
+
+  // 画面
+  const faces = [
+    { idx:[0,1,2,3], color:'#5b21b6', z:pts[0].y },
+    { idx:[4,5,6,7], color:'#7c3aed', z:pts[4].y },
+    { idx:[0,1,5,4], color:'#6d28d9', z:pts[0].x },
+    { idx:[2,3,7,6], color:'#8b5cf6', z:-pts[2].x },
+    { idx:[1,2,6,5], color:'#7c3aed', z:pts[1].y+100 },
+    { idx:[0,3,7,4], color:'#4c1d95', z:-pts[0].y }
+  ];
+  faces.sort((a,b) => a.z - b.z).forEach(f => {
+    ctx.beginPath();
+    ctx.moveTo(pts[f.idx[0]].x, pts[f.idx[0]].y);
+    f.idx.forEach(i => ctx.lineTo(pts[i].x, pts[i].y));
+    ctx.closePath();
+    ctx.fillStyle = f.color;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.25)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  // 标注
+  ctx.fillStyle = '#e8f4ff';
+  ctx.font = '14px "PingFang SC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('高锰酸钾晶体模型', cx, cy + 90);
+  ctx.fillStyle = '#c4b5fd';
+  ctx.font = '12px "PingFang SC", sans-serif';
+  ctx.fillText('（这是电脑画的简化模型哦）', cx, cy + 108);
+}
+function rotateCrystal() {
+  crystalAngle += 25;
+  const viewer = document.getElementById('mol-viewer');
+  viewer.innerHTML = '';
+  drawCrystal(viewer, crystalAngle);
+  document.getElementById('crystal-hint').textContent = '转了 ' + Math.round(crystalAngle/25) + ' 下，从各个角度看一看！';
+  document.getElementById('crystal-hint').style.color = '#4ade80';
+}
+function resetCrystal() {
+  crystalAngle = 0;
+  const viewer = document.getElementById('mol-viewer');
+  viewer.innerHTML = '';
+  drawCrystal(viewer, 0);
+  document.getElementById('crystal-hint').textContent = '恢复原位啦！';
+  document.getElementById('crystal-hint').style.color = '#c4b5fd';
+}
+initCrystal();
+
+// ============ 紫色扩散模拟 ============
+const diffCanvas = document.getElementById('diffusion-canvas');
+const diffCtx = diffCanvas.getContext('2d');
+let particles = [];
+let diffusionRunning = false;
+let diffusionTimer = null;
+
+function resizeDiffCanvas() {
+  const rect = diffCanvas.parentElement.getBoundingClientRect();
+  diffCanvas.width = Math.min(680, rect.width - 20);
+  diffCanvas.height = Math.min(400, diffCanvas.width * 0.59);
+  drawWater();
+}
+function drawWater() {
+  const w = diffCanvas.width, h = diffCanvas.height;
+  // 水背景
+  const grad = diffCtx.createLinearGradient(0,0,w,h);
+  grad.addColorStop(0, '#0a1628');
+  grad.addColorStop(1, '#0f2440');
+  diffCtx.fillStyle = grad;
+  diffCtx.fillRect(0,0,w,h);
+  // 水面效果
+  diffCtx.fillStyle = 'rgba(96,184,255,.04)';
+  for (let i = 0; i < w; i += 30) {
+    diffCtx.beginPath();
+    diffCtx.arc(i, h-10, 8+Math.sin(Date.now()/800+i)*3, 0, Math.PI*2);
+    diffCtx.fill();
+  }
+  // 画粒子
+  particles.forEach(p => {
+    const alpha = p.life * 0.7;
+    diffCtx.beginPath();
+    diffCtx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    diffCtx.fillStyle = `rgba(124,58,237,${alpha})`;
+    diffCtx.fill();
+  });
+}
+function dropCrystal() {
+  if (diffusionRunning) return;
+  diffusionRunning = true;
+  particles = [];
+  const w = diffCanvas.width, h = diffCanvas.height;
+  const cx = w/2, cy = h/2;
+  // 创建扩散粒子
+  for (let i = 0; i < 180; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * 30;
+    particles.push({
+      x: cx + Math.cos(angle)*dist,
+      y: cy + Math.sin(angle)*dist,
+      vx: (Math.random()-0.5)*0.8,
+      vy: (Math.random()-0.5)*0.8,
+      r: 2 + Math.random()*3,
+      life: 0.9 + Math.random()*0.1
+    });
+  }
+  // 中心深色圆
+  particles.push({x:cx, y:cy, vx:0, vy:0, r:28, life:1});
+
+  document.getElementById('diffusion-status').textContent = '💧 高锰酸钾已滴入！观察紫色慢慢扩散……';
+  document.getElementById('diffusion-status').style.color = '#c4b5fd';
+
+  let frame = 0;
+  function animate() {
+    frame++;
+    // 扩散粒子
+    particles.forEach(p => {
+      if (p.life > 0.05) {
+        p.x += p.vx; p.y += p.vy;
+        p.vx += (Math.random()-0.5)*0.15;
+        p.vy += (Math.random()-0.5)*0.15;
+        p.life -= 0.003;
+        p.r *= 0.998;
+      }
+    });
+    // 加新粒子
+    if (frame < 120) {
+      for (let i = 0; i < 3; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 20 + frame * 1.2;
+        particles.push({
+          x: cx + Math.cos(angle)*dist,
+          y: cy + Math.sin(angle)*dist,
+          vx: (Math.random()-0.5)*0.3,
+          vy: (Math.random()-0.5)*0.3,
+          r: 2+Math.random()*2.5,
+          life: 0.7+Math.random()*0.3
+        });
+      }
+    }
+    // 去除dead粒子
+    particles = particles.filter(p => p.life > 0.05);
+    drawWater();
+    if (frame < 280) {
+      requestAnimationFrame(animate);
+    } else {
+      document.getElementById('diffusion-status').innerHTML = '✅ 观察完毕！你看到紫色从中心慢慢向四周扩散了吗？<br>颜色从深紫色慢慢变成很淡的紫色……';
+      document.getElementById('diffusion-status').style.color = '#4ade80';
+      diffusionRunning = false;
+    }
+  }
+  animate();
+}
+function resetDiffusion() {
+  particles = [];
+  diffusionRunning = false;
+  const w = diffCanvas.width, h = diffCanvas.height;
+  const grad = diffCtx.createLinearGradient(0,0,w,h);
+  grad.addColorStop(0, '#0a1628');
+  grad.addColorStop(1, '#0f2440');
+  diffCtx.fillStyle = grad;
+  diffCtx.fillRect(0,0,w,h);
+  document.getElementById('diffusion-status').textContent = '已重置！再点击"滴入高锰酸钾"试一次吧！';
+  document.getElementById('diffusion-status').style.color = '#8fb8e8';
+}
+// 初始绘制
+resizeDiffCanvas();
+window.addEventListener('resize', resizeDiffCanvas);
+
+// ============ 前测 ============
+let p1done=false, p2done=false;
+function checkPretest1(btn, isCorrect) {
+  if(p1done) return; p1done=true;
+  const fb = document.getElementById('p1-feedback');
+  fb.style.display = 'block';
+  const btns = document.querySelectorAll('#pretest .big-btn');
+  if(isCorrect) {
+    fb.className = 'result';
+    fb.innerHTML = '✅ 答对啦！<strong>溶解</strong>就是固体在水里慢慢"散开"的过程。<br>💡 <em>糖和盐都能溶解在水里，高锰酸钾也是哦！</em>';
+    btn.classList.add('correct');
+  } else {
+    fb.className = 'result wrong-result';
+    fb.innerHTML = '❌ 答案是 <strong>"溶解"</strong>哦！<br>💡 <em>并不是魔法，而是科学原理：溶质（固体）在溶剂（水）里分散开来。</em>';
+    btn.classList.add('wrong');
+  }
+  showPretestResult();
+}
+function checkPretest2(btn, isCorrect) {
+  if(p2done) return; p2done=true;
+  const fb = document.getElementById('p2-feedback');
+  fb.style.display = 'block';
+  if(isCorrect) {
+    fb.className = 'result';
+    fb.innerHTML = '✅ 答对啦！就是<strong>高锰酸钾</strong>！<br>💡 <em>它的名字很有趣，读作 gāo měng suān jiǎ，是我们今天的主角！</em>';
+    btn.classList.add('correct');
+  } else {
+    fb.className = 'result wrong-result';
+    fb.innerHTML = '❌ 答案是 <strong>"高锰酸钾"</strong>哦！<br>💡 <em>它才是能让水变紫色的"神秘"化学药品，记住它的名字吧！</em>';
+    btn.classList.add('wrong');
+  }
+  showPretestResult();
+}
+function showPretestResult(){
+  if(p1done && p2done){
+    const t = document.getElementById('pretest-total');
+    t.style.display = 'block';
+    t.textContent = '📊 课前小测完成！不管答对多少，学完今天的内容你一定能全对！加油！💪';
+  }
+}
+
+// ============ 测验 ============
+let score = 0;
+let q1done = false, q2done = false, q3done = false;
+function checkQuiz(btn, isCorrect, msg) {
+  if (q1done) return;
+  q1done = true;
+  const fb = document.getElementById('q1-feedback');
+  fb.className = 'result ' + (isCorrect ? '' : 'wrong-result');
+  fb.style.display = 'block';
+  fb.textContent = msg;
+  if (isCorrect) { score++; btn.classList.add('correct'); }
+  else btn.classList.add('wrong');
+  updateTotal();
+}
+function checkQuiz2(btn, isCorrect, msg) {
+  if (q2done) return;
+  q2done = true;
+  const fb = document.getElementById('q2-feedback');
+  fb.className = 'result ' + (isCorrect ? '' : 'wrong-result');
+  fb.style.display = 'block';
+  fb.textContent = msg;
+  if (isCorrect) { score++; btn.classList.add('correct'); }
+  else btn.classList.add('wrong');
+  updateTotal();
+}
+function checkQuiz3(btn, isCorrect, msg) {
+  if (q3done) return;
+  q3done = true;
+  const fb = document.getElementById('q3-feedback');
+  fb.className = 'result ' + (isCorrect ? '' : 'wrong-result');
+  fb.style.display = 'block';
+  fb.textContent = msg;
+  if (isCorrect) { score++; btn.classList.add('correct'); }
+  else btn.classList.add('wrong');
+  updateTotal();
+}
+function updateTotal() {
+  const done = [q1done,q2done,q3done].filter(Boolean).length;
+  if (done >= 2) {
+    const total = document.getElementById('quiz-total');
+    total.style.display = 'block';
+    const stars = score >= 3 ? '⭐⭐⭐' : score >= 2 ? '⭐⭐' : '⭐';
+    total.textContent = stars + ' 你的得分：' + score + '/3  ' + (score>=2?'🎉 真棒！':'继续加油哦！');
+  }
+}
+
+// ============ 后测 ============
+let postScore = 0, post1done = false, post2done = false;
+function checkPost1(btn, isCorrect) {
+  if(post1done) return; post1done=true;
+  const fb = document.getElementById('post1-fb');
+  fb.style.display = 'block';
+  if(isCorrect) {
+    postScore++; fb.className = 'result'; btn.classList.add('correct');
+    fb.innerHTML = '✅ 非常棒！紫色是从晶体旁边<strong>慢慢扩散</strong>开的，越远的地方颜色越淡。';
+  } else {
+    fb.className = 'result wrong-result'; btn.classList.add('wrong');
+    fb.innerHTML = '❌ 想一想前面做的扩散模拟实验，紫色是<strong>慢慢从中心向四周扩散</strong>的，不是一下子就充满整杯水哦！';
+  }
+  showPostResult();
+}
+function checkPost2(btn, isCorrect) {
+  if(post2done) return; post2done=true;
+  const fb = document.getElementById('post2-fb');
+  fb.style.display = 'block';
+  if(isCorrect) {
+    postScore++; fb.className = 'result'; btn.classList.add('correct');
+    fb.innerHTML = '✅ 对了！高锰酸钾是化学药品，<strong>绝对不能放进嘴里</strong>！';
+  } else {
+    fb.className = 'result wrong-result'; btn.classList.add('wrong');
+    fb.innerHTML = '❌ 记住：高锰酸钾是化学药品，<strong>绝对不能当糖果吃</strong>！安全第一！';
+  }
+  showPostResult();
+}
+function showPostResult() {
+  if(post1done && post2done) {
+    const res = document.getElementById('posttest-result');
+    res.style.display = 'block';
+    const stars = postScore >= 2 ? '⭐⭐⭐' : postScore >= 1 ? '⭐⭐' : '⭐';
+    res.textContent = stars + ' 后测得分：' + postScore + '/2  ' + (postScore>=2 ? '🎉 恭喜，你已经是高锰酸钾小专家了！' : '💪 没关系，可以再看一遍前面的内容！');
+  }
+}
+</script>
+
+<!-- ============ AI 学伴（内联） ============ -->
+<script>
+(function(){
+  const cfg = window.__TEACHANY_TUTOR_CONFIG__ || {};
+  let panelOpen = false;
+  function createWidget(){
+    const wrap = document.createElement('div');
+    wrap.id = 'teachany-ai-tutor';
+    wrap.innerHTML = '<button id="tutor-toggle" aria-label="打开AI学伴" style="position:fixed;bottom:24px;right:24px;z-index:9999;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#60b8ff,#a78bfa);border:none;color:#fff;font-size:28px;cursor:pointer;box-shadow:0 6px 24px rgba(96,184,255,.35);transition:transform .2s;">🤖</button><div id="tutor-panel" style="position:fixed;bottom:90px;right:24px;z-index:9998;width:320px;max-height:420px;background:#132240;border:1px solid rgba(148,163,184,.2);border-radius:18px;box-shadow:0 12px 48px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden;"><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(148,163,184,.12);"><span style="font-weight:700;color:#e8f4ff;">🤖 AI 学伴</span><button id="tutor-close" style="background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;">✕</button></div><div id="tutor-msgs" style="flex:1;padding:12px;overflow-y:auto;font-size:14px;line-height:1.7;max-height:280px;"><div style="color:#bae6fd;margin-bottom:8px;">你好！我是你的科学小助手🧪<br>有什么关于高锰酸钾的问题，都可以问我哦！</div></div><div style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(148,163,184,.12);"><input id="tutor-input" placeholder="输入你的问题…" style="flex:1;padding:8px 12px;border-radius:10px;border:1px solid rgba(148,163,184,.2);background:#0a1628;color:#e8f4ff;font-size:14px;min-height:36px;"><button id="tutor-send" style="padding:8px 16px;border-radius:10px;border:none;background:linear-gradient(135deg,#60b8ff,#a78bfa);color:#fff;font-weight:700;font-size:14px;cursor:pointer;min-height:36px;">发送</button></div></div>';
+    document.body.appendChild(wrap);
+    document.getElementById('tutor-toggle').onclick = function(){
+      panelOpen = !panelOpen;
+      document.getElementById('tutor-panel').style.display = panelOpen ? 'flex' : 'none';
+    };
+    document.getElementById('tutor-close').onclick = function(){
+      panelOpen = false;
+      document.getElementById('tutor-panel').style.display = 'none';
+    };
+    function getBotReply(q){
+      var q2 = q.toLowerCase();
+      if(q2.indexOf('紫色')>=0||q2.indexOf('颜色')>=0) return '高锰酸钾放进水里，水会变成紫色哦！紫色从晶体旁边开始，慢慢向四周扩散，特别漂亮！🟣';
+      if(q2.indexOf('晶体')>=0||q2.indexOf('什么样子')>=0||q2.indexOf('长什么样')>=0) return '高锰酸钾晶体是紫黑色的小颗粒，看起来有点像深紫色的小石子或者小糖粒！';
+      if(q2.indexOf('安全')>=0||q2.indexOf('注意')>=0||q2.indexOf('危险')>=0) return '⚠️ 高锰酸钾不能放进嘴里，也不能弄到眼睛里！做实验一定要在爸爸妈妈或者老师的帮助下进行哦！';
+      if(q2.indexOf('扩散')>=0||q2.indexOf('溶解')>=0) return '高锰酸钾在水里会慢慢"散开"，这叫溶解。紫色的粒子会从小晶体旁边跑到水的各个地方，所以整杯水都变紫了！';
+      if(q2.indexOf('消毒')>=0||q2.indexOf('伤口')>=0||q2.indexOf('鱼')>=0) return '对的！高锰酸钾可以消毒，医生有时用它清洗小伤口，养鱼的人也会用它给鱼塘水消毒哦！';
+      if(q2.indexOf('名字')>=0||q2.indexOf('读音')>=0||q2.indexOf('怎么读')>=0) return '它的名字读作：gāo（高）měng（锰）suān（酸）jiǎ（钾）！你可以多读几遍哦！';
+      return '这个问题很有意思！🤔 你可以问问爸爸妈妈，或者在学校问老师哦！继续探索科学的秘密吧！🔬';
+    }
+    function send(){
+      var inp = document.getElementById('tutor-input');
+      var v = inp.value.trim(); if(!v) return;
+      var msgs = document.getElementById('tutor-msgs');
+      var userDiv = document.createElement('div');
+      userDiv.style.cssText = 'text-align:right;color:#e8f4ff;margin-bottom:8px;padding:6px 12px;background:rgba(96,184,255,.15);border-radius:12px;';
+      userDiv.textContent = v; msgs.appendChild(userDiv);
+      inp.value = '';
+      setTimeout(function(){
+        var aiDiv = document.createElement('div');
+        aiDiv.style.cssText = 'color:#bae6fd;margin-bottom:8px;';
+        aiDiv.textContent = getBotReply(v);
+        msgs.appendChild(aiDiv);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 600);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    document.getElementById('tutor-send').onclick = send;
+    document.getElementById('tutor-input').addEventListener('keydown', function(e){ if(e.key==='Enter') send(); });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', createWidget);
+  else createWidget();
+})();
+</script>
+
+</body>
+</html>
