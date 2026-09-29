@@ -1,0 +1,17 @@
+{
+  "course_id": "kmno4-grade2",
+  "name": "高锰酸钾趣味实验（小学2年级）",
+  "subject": "chemistry",
+  "grade": "elementary-2",
+  "node_id": "free_mode_kmno4_grade2",
+  "lesson_type": "experiment",
+  "version": "1.0.0",
+  "teachany_version": "7.14.0",
+  "description": "小学生2年级科学课件：观察高锰酸钾在水中的有趣现象，认识紫色小晶体，配有3D晶体展示和紫色扩散互动模拟。",
+  "prereq_course_ids": [],
+  "next_course_id": "",
+  "keywords": ["高锰酸钾", "化学实验", "颜色扩散", "小学科学", "物质科学"],
+  "free_mode": true,
+  "author": "TeachAny AI",
+  "created_at": "2026-06-09"
+}
